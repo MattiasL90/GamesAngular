@@ -1,7 +1,7 @@
-<p> {{ gameWord }} </p>
+<p> {{ gameWordUi }} </p>
 <br/>
 <p> {{ playerWordUi }} </p>
 
 <main>
-    <input nbInput status="Success" #textInput (keyup)="makeGuess($event);textInput.value=''">
+    <input nbInput status="Success" #letter (input)="makeGuess($event)" type="text">
 </main>

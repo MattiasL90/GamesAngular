@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hangman',
@@ -13,7 +13,6 @@ export class HangmanComponent implements OnInit {
 
   gameWord: string[] = [];
   public playerWord: string[] = [];
-  wordword;
 
   constructor() { }
 
@@ -26,7 +25,11 @@ export class HangmanComponent implements OnInit {
   }
 
   get playerWordUi() {
-    return this.playerWord;
+    return this.playerWord.join("");
+  }
+
+  get gameWordUi() {
+    return this.gameWord.join("");
   }
 
   getNewWord() {
@@ -38,11 +41,12 @@ export class HangmanComponent implements OnInit {
     this.playerWord = Array(word.length).fill(null);
   }
 
-  makeGuess(event: any) {
+  makeGuess(c) {
     for (let i = 0; i < this.gameWord.length; i++)
     {
-      if (event.key === this.gameWord[i].toLowerCase) {
-        this.playerWord[i] = event.key;
+      let t = c.data;
+      if (t.toLowerCase() === this.gameWord[i].toLowerCase()) {
+        this.playerWord[i] = c.data;
         this.playerWord = [...this.playerWord];
       }
     }

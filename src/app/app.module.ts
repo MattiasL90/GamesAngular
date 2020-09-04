@@ -12,6 +12,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { TopGamesNavComponent } from './top-games-nav/top-games-nav.component';
 import { HangmanComponent } from './hangman/hangman.component';
 import { HangmanLetterComponent } from './hangman-letter/hangman-letter.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'tictactoe', component: TicTacToeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     NbEvaIconsModule,
     NbButtonModule,
     NbInputModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
