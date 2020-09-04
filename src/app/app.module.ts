@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { TictactoesquareComponent } from './tictactoesquare/tictactoesquare.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbButtonModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbButtonModule, NbInputModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { TopGamesNavComponent } from './top-games-nav/top-games-nav.component';
 import { HangmanComponent } from './hangman/hangman.component';
+import { HangmanLetterComponent } from './hangman-letter/hangman-letter.component';
 
 const routes: Routes = [
   { path: 'tictactoe', component: TicTacToeComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
     TicTacToeComponent,
     TictactoesquareComponent,
     TopGamesNavComponent,
-    HangmanComponent
+    HangmanComponent,
+    HangmanLetterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ const routes: Routes = [
     NbLayoutModule,
     NbEvaIconsModule,
     NbButtonModule,
+    NbInputModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
