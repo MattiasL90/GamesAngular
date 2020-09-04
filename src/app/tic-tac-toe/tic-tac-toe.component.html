@@ -1,8 +1,8 @@
-<h1>Current Player: {{ player }}</h1>
+<h1>Det är {{ player }} tur.</h1>
 
-<button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+<button nbButton outline status="danger" (click)="newGame()">Starta nytt spel</button>
 
-<h2 *ngIf="winner">Player {{ winner }} won the game!</h2>
+<h2 *ngIf="winner">Spelare {{ winner }} vann!</h2>
 
 <main>
     <app-tictactoesquare *ngFor="let val of squares; let i = index" [value]="val" (click)="makeMove(i)">
