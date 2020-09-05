@@ -11,8 +11,8 @@ import { NbThemeModule, NbLayoutModule, NbButtonModule, NbInputModule } from '@n
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { TopGamesNavComponent } from './top-games-nav/top-games-nav.component';
 import { HangmanComponent } from './hangman/hangman.component';
-import { HangmanLetterComponent } from './hangman-letter/hangman-letter.component';
 import { FormsModule } from '@angular/forms';
+import { HangmanDrawingComponent } from './hangman-drawing/hangman-drawing.component';
 
 const routes: Routes = [
   { path: 'tictactoe', component: TicTacToeComponent },
@@ -26,7 +26,7 @@ const routes: Routes = [
     TictactoesquareComponent,
     TopGamesNavComponent,
     HangmanComponent,
-    HangmanLetterComponent
+    HangmanDrawingComponent
   ],
   imports: [
     BrowserModule,

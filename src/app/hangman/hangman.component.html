@@ -1,7 +1,15 @@
-<p> {{ gameWordUi }} </p>
-<br/>
-<p> {{ playerWordUi }} </p>
-
 <main>
-    <input nbInput status="Success" #letter (input)="makeGuess($event)" type="text">
+    <div>
+        <h3 class="winner"> {{ winnerUi }} </h3>
+    </div>
+    <h3> {{ playerWordUi }} </h3>
+    <div id="hangmanDiv">
+        <app-hangman-drawing>
+
+        </app-hangman-drawing>
+    </div>
+    <div id="letterBox">
+        <input nbInput status="Success" #letter (input)="makeGuess($event)" (keyup)="letter.value=''" type="text">
+        <h2> {{ wrongLettersUi }} </h2>
+    </div>
 </main>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HangmanLetterComponent } from './hangman-letter.component';
+import { HangmanDrawingComponent } from './hangman-drawing.component';
 
-describe('HangmanLetterComponent', () => {
-  let component: HangmanLetterComponent;
-  let fixture: ComponentFixture<HangmanLetterComponent>;
+describe('HangmanDrawingComponent', () => {
+  let component: HangmanDrawingComponent;
+  let fixture: ComponentFixture<HangmanDrawingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HangmanLetterComponent ]
+      declarations: [ HangmanDrawingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HangmanLetterComponent);
+    fixture = TestBed.createComponent(HangmanDrawingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
