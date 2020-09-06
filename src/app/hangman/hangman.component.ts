@@ -17,7 +17,7 @@ export class HangmanComponent implements OnInit {
   wrongLetters: string[] = [];
   lettersInWord: number;
   wrongGuesses = 0;
-  winner: boolean;
+  winner: number;
 
   @ViewChild(HangmanDrawingComponent) drawing: HangmanDrawingComponent;
 
@@ -30,7 +30,9 @@ export class HangmanComponent implements OnInit {
 
   newGame(): void {
     this.getNewWord();
-    this.winner = false;
+    this.wrongGuesses = 0;
+    this.winner = 0;
+    this.drawing.newDrawing();
     this.gameWord = [...this.gameWord];
   }
 
@@ -47,8 +49,14 @@ export class HangmanComponent implements OnInit {
   }
 
   get winnerUi(): string {
-    if(this.winner === true){
+    if (this.winner === 1)
+    {
       let winText = 'Du har vunnit!';
+      return winText;
+    }
+    if (this.winner === 2)
+    {
+      let winText = 'Du har förlorat, starta nytt spel!';
       return winText;
     }
   }
@@ -67,24 +75,38 @@ export class HangmanComponent implements OnInit {
   }
 
   makeGuess(c): void {
-    let success: boolean = false;
-    let t = c.data;
-    for (let i = 0; i < this.gameWord.length; i++)
+    if (this.winner === 0)
     {
-      if (t.toLowerCase() === this.gameWord[i].toLowerCase()) {
-        this.playerWord[i] = c.data;
-        this.playerWord = [...this.playerWord];
-        success = true;
-        this.checkWinner();
-      }
-      if (i === (this.gameWord.length - 1)){
-        if (success === false) {
-          this.wrongGuesses++;
-          this.wrongLetters.push(t);
-          this.wrongLetters = [...this.wrongLetters];
-          this.checkDraw();
+      let success: boolean = false;
+      let t = c.data;
+      for (let i = 0; i < this.gameWord.length; i++)
+      {
+        if (t.toLowerCase() === this.gameWord[i].toLowerCase()) {
+          this.playerWord[i] = c.data;
+          this.playerWord = [...this.playerWord];
+          success = true;
+          this.checkWinner();
         }
-        success = false;
+        if (i === (this.gameWord.length - 1)){
+          if (success === false) {
+            let letterGuessed = false;
+            for (let i = 0; i < this.wrongLetters.length; i++)
+            {
+              if (t === this.wrongLetters[i])
+              {
+                letterGuessed = true;
+              }
+            }
+            if (letterGuessed === false)
+            {
+              this.wrongGuesses++;
+              this.wrongLetters.push(t);
+              this.wrongLetters = [...this.wrongLetters];
+              this.checkDraw();
+            }
+          }
+          success = false;
+        }
       }
     }
   }
@@ -101,7 +123,8 @@ export class HangmanComponent implements OnInit {
         count++;
         if (count === gWord.length)
         {
-          this.winner = true;
+          this.drawing.drawWinFace();
+          this.winner = 1;
         }
       }
     }
@@ -140,6 +163,8 @@ export class HangmanComponent implements OnInit {
     if (this.wrongGuesses === 10) {
       this.drawing.drawPoleBaseDownLeft();
       this.drawing.drawPoleBaseDownRight();
+      this.drawing.drawLostFace();
+      this.winner = 2;
     }
   }
 }

@@ -1,4 +1,25 @@
-.winner {
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#gameBox {
+    display: grid;
+    place-items: center;
+    width: 600px;
+    height: 800px;
+}
+
+.textBox {
+    display: grid;
+    place-items: center;
     height: 50px;
-    color: red;
+    width: 100%;
+}
+
+#newGameButton {
+    margin-left: 50px;
+    float: right;
 }

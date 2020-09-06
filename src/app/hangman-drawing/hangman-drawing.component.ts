@@ -20,11 +20,59 @@ export class HangmanDrawingComponent implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
   }
 
+  newDrawing(): void {
+    this.ctx.clearRect(0, 0, 500, 500);
+  }
+
   drawCircle(): void {
     this.ctx.beginPath();
     this.ctx.arc(140, 40, 20, 0, 2 * Math.PI);
     this.ctx.stroke();
     this.ctx.fillStyle = 'red';
+    this.ctx.fill();
+  }
+
+  drawLostFace(): void {
+    this.drawLeftEye();
+    this.drawRightEye();
+    this.drawMouthLost();
+  }
+
+  drawWinFace(): void {
+    this.drawLeftEye();
+    this.drawRightEye();
+    this.drawMouthWin();
+  }
+
+  drawRightEye(): void{
+    this.ctx.beginPath();
+    this.ctx.arc(145, 35, 2, 0, 2 * Math.PI);
+    this.ctx.stroke();
+    this.ctx.fillStyle = 'black';
+    this.ctx.fill();
+  }
+
+  drawLeftEye(): void{
+    this.ctx.beginPath();
+    this.ctx.arc(135, 35, 2, 0, 2 * Math.PI);
+    this.ctx.stroke();
+    this.ctx.fillStyle = 'black';
+    this.ctx.fill();
+  }
+
+  drawMouthWin(): void{
+    this.ctx.beginPath();
+    this.ctx.arc(140, 45, 8, 6, 3 * Math.PI);
+    this.ctx.stroke();
+    this.ctx.fillStyle = 'black';
+    this.ctx.fill();
+  }
+
+  drawMouthLost(): void {
+    this.ctx.beginPath();
+    this.ctx.arc(140, 52, 8, 3, 2 * Math.PI);
+    this.ctx.stroke();
+    this.ctx.fillStyle = 'black';
     this.ctx.fill();
   }
 

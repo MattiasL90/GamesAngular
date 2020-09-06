@@ -1,15 +1,22 @@
 <main>
-    <div>
-        <h3 class="winner"> {{ winnerUi }} </h3>
-    </div>
-    <h3> {{ playerWordUi }} </h3>
-    <div id="hangmanDiv">
-        <app-hangman-drawing>
+    <section id="gameBox">
+        <section class="textBox">
+            <h3> {{ winnerUi }} </h3>
+        </section>
+        <section class="textBox">
+            <h3> {{ playerWordUi }} </h3>
+        </section>
+        <section id="hangmanBox">
+            <app-hangman-drawing>
 
-        </app-hangman-drawing>
-    </div>
-    <div id="letterBox">
-        <input nbInput status="Success" #letter (input)="makeGuess($event)" (keyup)="letter.value=''" type="text">
-        <h2> {{ wrongLettersUi }} </h2>
-    </div>
+            </app-hangman-drawing>
+        </section>
+        <section class="letterBox">
+            <input nbInput status="Success" #letter (input)="makeGuess($event)" (keyup)="letter.value=''" type="text">
+            <button nbButton outline status="danger" id="newGameButton" (click)="newGame()">Nytt spel</button>
+        </section>
+        <section class=textBox>
+            <h3> {{ wrongLettersUi }} </h3>
+        </section>
+    </section>
 </main>
