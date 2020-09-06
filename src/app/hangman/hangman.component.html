@@ -7,13 +7,11 @@
             <h3> {{ playerWordUi }} </h3>
         </section>
         <section id="hangmanBox">
-            <app-hangman-drawing>
-
-            </app-hangman-drawing>
+            <app-hangman-drawing></app-hangman-drawing>
         </section>
         <section class="letterBox">
             <input nbInput status="Success" #letter (input)="makeGuess($event)" (keyup)="letter.value=''" type="text">
-            <button nbButton outline status="danger" id="newGameButton" (click)="newGame()">Nytt spel</button>
+            <button nbButton outline status="danger" id="newGameButton" (click)="resetGame()">Nytt spel</button>
         </section>
         <section class=textBox>
             <h3> {{ wrongLettersUi }} </h3>

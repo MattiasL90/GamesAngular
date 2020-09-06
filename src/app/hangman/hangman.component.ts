@@ -13,7 +13,7 @@ export class HangmanComponent implements OnInit {
   ];
 
   gameWord: string[] = [];
-  public playerWord: string[] = [];
+  playerWord: string[] = [];
   wrongLetters: string[] = [];
   lettersInWord: number;
   wrongGuesses = 0;
@@ -28,11 +28,15 @@ export class HangmanComponent implements OnInit {
     this.newGame();
   }
 
+  resetGame(): void {
+    this.drawing.newDrawing();
+    this.newGame();
+  }
+
   newGame(): void {
     this.getNewWord();
     this.wrongGuesses = 0;
     this.winner = 0;
-    this.drawing.newDrawing();
     this.gameWord = [...this.gameWord];
   }
 
@@ -63,14 +67,9 @@ export class HangmanComponent implements OnInit {
 
   getNewWord(): void {
     let count = Math.floor(Math.random() * (this.words.length));
-    let word = this.words[count];
-    let letterCount = 0;
-    for (let i = 0; i < word.length; i++){
-      this.gameWord[i] = word.charAt(i);
-      letterCount++;
-    }
-    this.lettersInWord = letterCount;
-    this.playerWord = Array(word.length).fill('_');
+    this.gameWord = this.words[count].split('');
+    this.lettersInWord = this.gameWord.length;
+    this.playerWord = Array(this.gameWord.length).fill('_');
     this.wrongLetters = Array();
   }
 
